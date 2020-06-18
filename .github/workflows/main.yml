@@ -24,9 +24,10 @@ jobs:
       shell: bash
       run: |
         mkdir build
-        cmake -S . -B ./build
+        cmake \
+         -S . -B ./build
     
     - name: Build
       shell: bash
-      run: cmake --build . --config Release    
+      run: cmake --build ./build --config Release    
 
