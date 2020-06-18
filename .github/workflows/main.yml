@@ -5,7 +5,7 @@ on: [push, pull_request]
 jobs:
   build:
     name: ${{ matrix.config.name }}
-    runs-on: ${{ matrix.config.os }}
+    runs-on: Windows Latest MSVC
     strategy:
       fail-fast: false
       matrix:
