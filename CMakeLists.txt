@@ -7,4 +7,6 @@ find_package(Boost 1.50 OPTIONAL_COMPONENTS program_options thread filesystem da
 include_directories(${Boost_INCLUDE_DIR})
 
 add_executable(main main.cpp)
+add_executable(test test.cpp)
 target_link_directories(main PRIVATE ${Boost_LIBRARY_DIRS})
+target_link_directories(test PRIVATE ${Boost_LIBRARY_DIRS})

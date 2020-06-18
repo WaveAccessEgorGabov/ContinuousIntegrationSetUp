@@ -20,5 +20,5 @@ jobs:
 
     - name: Run
       shell: bash
-      run: ./Release/main.exe
+      run: ./Release/test.exe
 
