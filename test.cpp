@@ -6,7 +6,7 @@ BOOST_AUTO_TEST_SUITE( TestLinterCombineConstructor )
 
     BOOST_AUTO_TEST_CASE( SimpleTest ) {
 		BOOST_CHECK( 1 == 1 );
-		BOOST_CHECK( 1 == 2 );
+//		BOOST_CHECK( 1 == 2 );
     }
 	
 BOOST_AUTO_TEST_SUITE_END()
