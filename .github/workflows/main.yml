@@ -1,14 +1,14 @@
-name: CMake Build Matrix
+name: CmakeCppBoost
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
   build:
-    name: CmakeWithBoost
+    name: CmakeCppBoost
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     
     - name: Configure
       shell: bash
