@@ -2,12 +2,6 @@ name: CMake Build Matrix
 
 on: [push, pull_request]
 
-env:
-  CMAKE_VERSION: 3.16.2
-  NINJA_VERSION: 1.9.0
-  BUILD_TYPE: Release
-  CCACHE_VERSION: 3.7.7
-
 jobs:
   build:
     name: ${{ matrix.config.name }}
@@ -25,30 +19,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-
-    - name: Install dependencies on windows
-      if: startsWith(matrix.config.os, 'windows')
-      run: |
-        choco install ninja cmake
-        ninja --version
-        cmake --version
     
     - name: Configure
-      shell: cmake -P {0}
+      shell: bash
       run: |
-        execute_process(
-          cmake
-            -S .
-            -B build
-            -D CMAKE_BUILD_TYPE=$ENV{BUILD_TYPE}
-            -G Ninja
-            -D CMAKE_MAKE_PROGRAM=ninja
-          RESULT_VARIABLE result
-        )
-        if (NOT result EQUAL 0)
-          message(FATAL_ERROR "Bad exit status")
-        endif()
-        
+        mkdir build
+        mkdir instdir
+        cmake \
+          -S . \
+          -B . \
+          -DCMAKE_BUILD_TYPE=Release
+          -G "Ninja"
     
     - name: Build
       shell: bash
