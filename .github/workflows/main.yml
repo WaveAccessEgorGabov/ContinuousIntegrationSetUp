@@ -1,30 +1,18 @@
-name: CMake Build Matrix
+name: CppWithBoost
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
   build:
-    name: ${{ matrix.config.name }}
-    runs-on: ${{ matrix.config.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        config:
-        - {
-            name: "Windows Latest MSVC", artifact: "Windows-MSVC.tar.xz",
-            os: windows-latest,
-            cc: "cl", cxx: "cl",
-            environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
-          }
+    name: BuildCppWithBoost
+    runs-on: Windows Latest MSVC
 
     steps:
     - uses: actions/checkout@v1
     
     - name: Configure
       shell: bash
-      run: |
-        mkdir build
-        cmake -S . -B ./build
+      run: cmake -S . -B .
     
     - name: Build
       shell: bash
